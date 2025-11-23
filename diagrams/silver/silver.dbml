@@ -1,76 +1,118 @@
 // TABELAS
 
-Table Custos {
-  ID_Custo integer [primary key]
-  ID_Chamado integer [ref: - Chamados.ID_Chamado, not null]
-  Custo numeric
+Table silver_dim_custos {
+  id_custo integer [primary key, ref: - silver_fato_chamados.id_chamado, not null] // Relação 1:1
+  id_chamado int
+  valor_custo decimal(18,10)
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
 }
 
-Table Clientes {
-  ID_Cliente integer [primary key]
-  Nome varchar
-  Email varchar
-  Região varchar
-  Idade integer
+Table silver_dim_clientes {
+  id_cliente integer [primary key]
+  nome string
+  email string
+  regiao string
+  idade int
+  faixa_etaria_geracao string
+  flag_idoso int
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
 }
 
-Table Atendentes {
-  ID_Atendente integer [primary key]
-  Nome_Atendente varchar
-  Nivel_Atendimento integer
+Table silver_dim_atendentes {
+  id_atendente integer [primary key,  ref: - silver_fato_chamados.id_atendente, not null] // Relação 1:1
+  nome_atendente varchar
+  nivel_atendimento integer
+  descricao_nivel varchar 
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
 }
 
-Table Motivos {
-  ID_Motivo integer [primary key]
-  Nome_Motivo varchar
-  Categoria varchar
-  Criticidade varchar
+Table silver_dim_motivos {
+  id_motivo integer [primary key]
+  nome_motivo string
+  categoria_motivo string
+  criticidade_motivo string
+  bronze_ingestion_timestamp timestamp
+  nome_motivo_clean string
+  silver_ingestion_timestamp timestamp
 }
 
-Table Pesquisas_Satisfacao {
-  ID_Pesquisa integer [primary key]
-  ID_Chamado integer [ref: - Chamados.ID_Chamado, not null]
-  Nota_Atendimento integer
+Table silver_dim_pesquisas_satisfacao {
+  id_pesquisa integer [primary key]
+  id_chamado integer [ref: - silver_fato_chamados.id_chamado, not null] // Relação 1:1
+  nota_atendimento int
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
 }
 
-Table Canais {
-  Nome_Canal varchar
-  Status_Canal varchar
+Table silver_dim_canais {
+  nome_canal varchar
+  status_canal varchar
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
 }
 
-Table Chamados_Hora { 
-  ID_Chamado integer [primary key, ref: - Chamados.ID_Chamado, not null]
-  ID_Cliente integer 
-  Hora_Abertura_Chamado timestamp
-  Hora_Inicio_Atendimento timestamp
-  Hora_Finalizacao_Atendimento timestamp
+Table silver_dim_chamados_data { 
+  id_chamado bigint [primary key, ref: - silver_fato_chamados.id_chamado, not null] // Relação 1:1
+  id_cliente bigint
+  data_hora_abertura timestamp
+  data_hora_inicio_atendimento timestamp
+  data_hora_finalizacao_atendimento timestamp
+  tempo_espera_atendimento_min double
+  tempo_atendimento_min double
+  ano integer
+  mes integer
+  dia integer
+  dia_semana_num int
+  nome_dia string
+  trimestre int
+  semana_do_ano int
+  flag_fim_de_semana boolean
+  ciclo_operacional string
+  evento_sazonal string
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp  timestamp
 }
 
-Table Chamados {
-  ID_Chamado integer [primary key]
-  ID_Cliente integer
-  Motivo varchar
-  Canal varchar
-  Resolvido bool
-  Hora_Abertura_Chamado timestamp
-  Hora_Inicio_Atendimento timestamp
-  Hora_Finalizacao_Atendimento timestamp
-  Tempo_Espera integer
-  Tempo_Atendimento integer
-  ID_Atendente integer
+Table silver_fato_chamados {
+  id_chamado bigint [primary key]
+  id_atendente bigint
+  id_cliente bigint
+  data_hora_abertura timestamp
+  data_hora_inicio_atendimento timestamp
+  data_hora_finalizacao_atendimento timestamp
+  tempo_espera_atendimento_min double
+  tempo_atendimento_min double
+  dia int
+  mes int
+  ano int
+  dia_semana_num int
+  nome_dia string
+  trimestre int
+  semana_do_ano int
+  flag_fim_de_semana boolean
+  ciclo_operacional string
+  evento_sazonal  string
+  nome_motivo string
+  nome_motivo_clean string
+  resolvido boolean
+  nome_canal string
+  valor_custo decimal(18,10)
+  nota_atendimento int
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp  timestamp
 }
 
 
-// RELAÇÕES
+// RELAÇÕES 1:N
 
 // Chamados <-> Clientes
-Ref: Chamados.ID_Cliente > Clientes.ID_Cliente
-
-// Chamados <-> Atendentes
-Ref: Chamados.ID_Atendente > Atendentes.ID_Atendente
+Ref: silver_fato_chamados.id_cliente > silver_dim_clientes.id_cliente
 
 // Chamados <-> Motivos
-Ref: Chamados.Motivo > Motivos.Nome_Motivo
+Ref: silver_fato_chamados.nome_motivo > silver_dim_motivos.nome_motivo
 
 // Chamados <-> Canais
-Ref: Chamados.Canal > Canais.Nome_Canal
+Ref: silver_fato_chamados.nome_canal > silver_dim_canais.nome_canal
