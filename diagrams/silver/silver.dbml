@@ -1,8 +1,8 @@
 // TABELAS
 
 Table silver_dim_custos {
-  id_custo integer [primary key, ref: - silver_fato_chamados.id_chamado, not null] // Relação 1:1
-  id_chamado int
+  id_custo integer [primary key]
+  id_chamado int [ref: - silver_fato_chamados.id_chamado, not null] // Relação 1:1
   valor_custo decimal(18,10)
   bronze_ingestion_timestamp timestamp
   silver_ingestion_timestamp timestamp
@@ -80,27 +80,9 @@ Table silver_fato_chamados {
   id_chamado bigint [primary key]
   id_atendente bigint
   id_cliente bigint
-  data_hora_abertura timestamp
-  data_hora_inicio_atendimento timestamp
-  data_hora_finalizacao_atendimento timestamp
-  tempo_espera_atendimento_min double
-  tempo_atendimento_min double
-  dia int
-  mes int
-  ano int
-  dia_semana_num int
-  nome_dia string
-  trimestre int
-  semana_do_ano int
-  flag_fim_de_semana boolean
-  ciclo_operacional string
-  evento_sazonal  string
-  nome_motivo string
   nome_motivo_clean string
   resolvido boolean
   nome_canal string
-  valor_custo decimal(18,10)
-  nota_atendimento int
   bronze_ingestion_timestamp timestamp
   silver_ingestion_timestamp  timestamp
 }
@@ -112,7 +94,7 @@ Table silver_fato_chamados {
 Ref: silver_fato_chamados.id_cliente > silver_dim_clientes.id_cliente
 
 // Chamados <-> Motivos
-Ref: silver_fato_chamados.nome_motivo > silver_dim_motivos.nome_motivo
+Ref: silver_fato_chamados.nome_motivo_clean > silver_dim_motivos.nome_motivo_clean
 
 // Chamados <-> Canais
 Ref: silver_fato_chamados.nome_canal > silver_dim_canais.nome_canal
