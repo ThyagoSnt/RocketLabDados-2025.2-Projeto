@@ -65,17 +65,7 @@ Utilizamos os dados tratados para gerar insights acionáveis focados em:
 ```
 <br />
 
-## 🛠️ Como Executar o Projeto
 
-Este projeto foi desenhado para rodar nativamente em um ambiente **PySpark** (preferencialmente **Databricks**). Siga os passos abaixo para configurar o ambiente e processar os dados.
-
-### 1. Clonagem do Repositório
-No seu ambiente Databricks (utilizando a funcionalidade *Repos*) ou no seu cluster PySpark local, clone o projeto:
-
-### 2. Carregue os dados
-Leia o README.md da pasta database desse repositório.
-
-### 3. Execute os notebooks
 
 
 ## 👨‍💻 Membros da Equipe

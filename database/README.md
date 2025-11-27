@@ -1,8 +1,11 @@
 # RocketLabDados-2025.2-Projeto
+Para encontrar os dados utilizados no projeto você pode acessar o drive: https://drive.google.com/drive/folders/1tvAXukhhDZKG1IC9w-nNZnKniPAuYRUu
+e baixar a pasta 'dados_brutos' para importa-los no ambiente do Databricks.
 
-# Extração de dados para csv:
+Caso nescessário você pode extrai-los utilizando o 'extract.sh' como mostrado abaixo:
+## Extração de dados para csv:
 
-Este diretório contém os arquivos necessários para restaurar um dump PostgreSQL (`dump.sql`) e exportar todas as tabelas para arquivos CSV.
+Adicione a essa pasta em seu diretório o conteudo de dentro da pasta 'Base de Dados' presente no drive.
 
 ### Estrutura de pastas
 
