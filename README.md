@@ -123,7 +123,7 @@ Conheça os **DataFreaks** - nossa equipe de desenvolvedores:
 
 ## 🌟 Nossos Valores
 
-Como **Barões da APIzadinha**, acreditamos em:
+Como **DataFreaks**, acreditamos em:
 
 - 💡 **Inovação**: Sempre buscando soluções criativas e tecnologias emergentes
 - 🤝 **Colaboração**: Trabalho em equipe e compartilhamento de conhecimento
