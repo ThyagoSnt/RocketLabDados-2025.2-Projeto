@@ -60,6 +60,7 @@ Utilizamos os dados tratados para gerar insights acionáveis focados em:
 │   ├── land_to_bronze.ipynb
 │   ├── bronze_to_silver.ipynb
 │   └── silver_to_gold.ipynb
+├── job.yaml
 ├── 📁 diagrams/          # Arquivos de visualização
 └── README.md
 ```
@@ -125,11 +126,9 @@ Conheça os **DataFreaks** - nossa equipe de desenvolvedores:
 
 Como **DataFreaks**, acreditamos em:
 
-- 💡 **Inovação**: Sempre buscando soluções criativas e tecnologias emergentes
 - 🤝 **Colaboração**: Trabalho em equipe e compartilhamento de conhecimento
 - 🎯 **Excelência**: Comprometimento com a qualidade em cada linha de código
 - 🚀 **Crescimento**: Aprendizado contínuo e desenvolvimento pessoal/profissional
-- 🌍 **Impacto**: Criar soluções que fazem diferença na vida das pessoas
 
 <br />
 
