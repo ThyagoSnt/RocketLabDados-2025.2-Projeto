@@ -71,3 +71,18 @@ Table gold_table_kpis_mes {
   idade_media_cliente double
   canal_mais_usado varchar
 }
+
+
+Table gold_fato_desempenho_canal {
+  id_chamado bigint [primary key]
+  id_cliente bigint
+  id_atendente bigint
+  nome_canal varchar
+  resolvido boolean
+  motivo string
+  categoria_motivo string
+  criticidade_motivo string
+  valor_custo decimal(18,10)
+  nota_atendimento int
+  gold_ingestion_timestamp timestamp
+}
