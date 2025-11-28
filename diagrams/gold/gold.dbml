@@ -86,3 +86,17 @@ Table gold_fato_desempenho_canal {
   nota_atendimento int
   gold_ingestion_timestamp timestamp
 }
+
+Table gold_fato_experiencia_cliente {
+  id_chamado bigint [primary key]
+  id_cliente bigint
+  nome string
+  faixa_etaria_geracao string
+  flag_idoso int
+  regiao string
+  canal_utilizado varchar
+  resolvido boolean
+  nota_atendimento int
+  flag_sucesso int
+  flag_respondeu_pesquisa int
+}
