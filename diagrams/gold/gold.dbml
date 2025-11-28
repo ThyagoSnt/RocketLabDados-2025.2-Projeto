@@ -26,3 +26,48 @@ Table gold_fato_chamados {
   valor_custo decimal(18,10)
   hora_dia int
 }
+
+
+Table gold_table_kpis_por_horario {
+hora_dia int
+qtd_chamados bigint
+nota_media double
+custo_total decimal(18,10)
+custo_medio_por_chamado decimal(18,10)
+idade_media_cliente double
+canal_mais_usado varchar
+}
+
+Table gold_table_kpis_dia_semana {
+  dia_semana_num int
+  nome_dia string
+  qtd_chamados bigint
+  nota_media double
+  custo_total decimal(18,10)
+  custo_medio_por_chamado decimal(18,10)
+  idade_media_cliente double
+  canal_mais_usado varchar
+}
+
+Table gold_table_kpis_semana_mes {
+  ano integer
+  mes integer
+  semana_mes integer
+  qtd_chamados bigint
+  nota_media double
+  custo_total decimal(18,10)
+  custo_medio_por_chamado decimal(18,10)
+  idade_media_cliente double
+  canal_mais_usado varchar
+}
+
+Table gold_table_kpis_mes {
+  ano integer
+  mes integer
+  qtd_chamados bigint
+  nota_media double
+  custo_total decimal(18,10)
+  custo_medio_por_chamado decimal(18,10)
+  idade_media_cliente double
+  canal_mais_usado varchar
+}
