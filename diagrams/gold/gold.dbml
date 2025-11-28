@@ -111,3 +111,120 @@ Table gold_dim_motivos_criticos {
   custo_total decimal(18,10)
   ranking_prioridade int
 }
+
+Table gold_view_desempenho_atendentes {
+  id_atendente integer
+  nome_atendente string
+  nivel_atendimento integer
+  descricao_nivel string
+  qtd_atendimentos long
+  tempo_medio_atendimento_min double
+  tempo_total_trabalhado_min double
+  taxa_resolucao double
+  nota_media double
+  custo_medio_atendente decimal(11,2)
+  custo_total_atendente decimal(21,2)
+}
+
+Table gold_view_analise_custos_motivos {
+  motivo string
+  categoria_motivo string
+  volume_chamados long
+  custo_total decimal(10,2)
+  custo_medio_por_chamado decimal(10,2)
+  tma_medio decimal(10,2)
+  pct_custo_total decimal(35,2)
+}
+
+Table gold_view_analise_custos_regiao {
+  regiao string
+  volume_chamados long
+  custo_total decimal(10,2)
+  custo_medio_por_chamado decimal(10,2)
+  tma_medio decimal(10,2)
+  pct_custo_total decimal(35,2)
+}
+
+Table gold_view_canais {
+  canal string
+  volume_chamados long
+  taxa_resolucao_pct double
+  taxa_potencial_transferencia_pct double
+  csat_medio double
+  tma_medio decimal(10,2)
+  custo_total decimal(10,2)
+  custo_medio_por_chamado decimal(10,2)
+  pct_custo_total decimal(35,2)
+}
+
+Table gold_view_comparativo_humano_robo {
+  tipo_atendimento string
+  volumetria long
+  qtd_pesquisas_respondidas long
+  csat_medio double
+  taxa_resolucao_pct double
+  custo_total_acumulado decimal(21,2)
+  custo_medio_unitario decimal(13,4)
+}
+
+
+Table gold_view_diagnostico_bots {
+  nome_canal string
+  complexidade string
+  tentativas long
+  taxa_sucesso_pct double
+  satisfacao_usuario double
+}
+
+Table gold_view_analise_geracoes_tech {
+  faixa_etaria_geracao string
+  canal_utilizado string
+  total_interacoes long
+  csat_medio double
+  taxa_resolucao_pct double
+  qtd_pesquisas_respondidas long
+}
+
+Table gold_view_jornada_cliente_360 {
+  id_cliente long
+  nome string
+  faixa_etaria_geracao string
+  regiao string
+  canal_mais_usado string
+  qtd_chamados_total long
+  qtd_falhas_resolucao long
+  taxa_sucesso_pessoal_pct double
+  csat_medio_pessoal double
+}
+
+
+Table gold_view_kpi_criticidade {
+  criticidade_motivo string
+  qtd_chamados long
+  nota_media double
+  tempo_espera_medio_min double
+  tempo_atendimento_medio_min double
+  custo_total decimal(21,2)
+  custo_medio_por_chamado decimal(11,2)
+  idade_media double
+  qtd_resolvidos long
+  
+  // Métricas Calculadas Gerais
+  qtd_nao_resolvidos long
+  perc_resolvidos double
+  perc_nao_resolvidos double
+
+  // Métricas de Nível 1
+  qtd_chamados_nivel_1 long
+  qtd_resolvidos_nivel_1 long
+  qtd_nao_resolvidos_nivel_1 long
+  taxa_resolucao_nivel_1 double
+  perc_chamados_nivel_1 double
+
+  // Métricas de Nível 2
+  qtd_chamados_nivel_2 long
+  qtd_resolvidos_nivel_2 long
+  qtd_nao_resolvidos_nivel_2 long
+  taxa_resolucao_nivel_2 double
+  perc_chamados_nivel_2 double
+}
