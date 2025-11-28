@@ -62,6 +62,7 @@ Utilizamos os dados tratados para gerar insights acionáveis focados em:
 │   └── silver_to_gold.ipynb
 ├── job.yaml
 ├── 📁 diagrams/          # Arquivos de visualização
+├── CASE-DATAFREAKS.pbix
 └── README.md
 ```
 <br />
