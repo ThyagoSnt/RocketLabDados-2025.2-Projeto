@@ -111,3 +111,17 @@ Table gold_dim_motivos_criticos {
   custo_total decimal(18,10)
   ranking_prioridade int
 }
+
+Table gold_view_desempenho_atendentes {
+  id_atendente integer
+  nome_atendente string
+  nivel_atendimento integer
+  descricao_nivel string
+  qtd_atendimentos long
+  tempo_medio_atendimento_min double
+  tempo_total_trabalhado_min double
+  taxa_resolucao double
+  nota_media double
+  custo_medio_atendente decimal(11,2)
+  custo_total_atendente decimal(21,2)
+}
