@@ -1,0 +1,28 @@
+Table gold_fato_chamados {
+  id_chamado bigint [primary key]
+  id_atendente bigint
+  id_cliente bigint
+  nome_motivo_clean string
+  resolvido boolean
+  nome_canal string
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
+  data_hora_abertura timestamp
+  data_hora_inicio_atendimento timestamp
+  data_hora_finalizacao_atendimento timestamp
+  tempo_espera_atendimento_min double
+  tempo_atendimento_min double
+  ano integer
+  mes integer
+  dia integer
+  dia_semana_num int
+  nome_dia string
+  trimestre int
+  semana_do_ano int
+  flag_fim_de_semana boolean
+  ciclo_operacional string
+  evento_sazonal string
+  nota_atendimento int
+  valor_custo decimal(18,10)
+  hora_dia int
+}
