@@ -166,3 +166,33 @@ Table gold_view_comparativo_humano_robo {
   custo_total_acumulado decimal(21,2)
   custo_medio_unitario decimal(13,4)
 }
+
+
+Table gold_view_diagnostico_bots {
+  nome_canal string
+  complexidade string
+  tentativas long
+  taxa_sucesso_pct double
+  satisfacao_usuario double
+}
+
+Table gold_view_analise_geracoes_tech {
+  faixa_etaria_geracao string
+  canal_utilizado string
+  total_interacoes long
+  csat_medio double
+  taxa_resolucao_pct double
+  qtd_pesquisas_respondidas long
+}
+
+Table gold_view_jornada_cliente_360 {
+  id_cliente long
+  nome string
+  faixa_etaria_geracao string
+  regiao string
+  canal_mais_usado string
+  qtd_chamados_total long
+  qtd_falhas_resolucao long
+  taxa_sucesso_pessoal_pct double
+  csat_medio_pessoal double
+}
