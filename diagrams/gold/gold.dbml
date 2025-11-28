@@ -100,3 +100,14 @@ Table gold_fato_experiencia_cliente {
   flag_sucesso int
   flag_respondeu_pesquisa int
 }
+
+Table gold_dim_motivos_criticos {
+  motivo string
+  categoria_motivo string
+  criticidade_motivo string
+  qtd_chamados bigint
+  csat_medio double
+  tme_medio double
+  custo_total decimal(18,10)
+  ranking_prioridade int
+}
