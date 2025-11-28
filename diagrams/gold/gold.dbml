@@ -1,0 +1,113 @@
+Table gold_fato_chamados {
+  id_chamado bigint [primary key]
+  id_atendente bigint
+  id_cliente bigint
+  nome_motivo_clean string
+  resolvido boolean
+  nome_canal string
+  bronze_ingestion_timestamp timestamp
+  silver_ingestion_timestamp timestamp
+  data_hora_abertura timestamp
+  data_hora_inicio_atendimento timestamp
+  data_hora_finalizacao_atendimento timestamp
+  tempo_espera_atendimento_min double
+  tempo_atendimento_min double
+  ano integer
+  mes integer
+  dia integer
+  dia_semana_num int
+  nome_dia string
+  trimestre int
+  semana_do_ano int
+  flag_fim_de_semana boolean
+  ciclo_operacional string
+  evento_sazonal string
+  nota_atendimento int
+  valor_custo decimal(18,10)
+  hora_dia int
+}
+
+
+Table gold_table_kpis_por_horario {
+hora_dia int
+qtd_chamados bigint
+nota_media double
+custo_total decimal(18,10)
+custo_medio_por_chamado decimal(18,10)
+idade_media_cliente double
+canal_mais_usado varchar
+}
+
+Table gold_table_kpis_dia_semana {
+  dia_semana_num int
+  nome_dia string
+  qtd_chamados bigint
+  nota_media double
+  custo_total decimal(18,10)
+  custo_medio_por_chamado decimal(18,10)
+  idade_media_cliente double
+  canal_mais_usado varchar
+}
+
+Table gold_table_kpis_semana_mes {
+  ano integer
+  mes integer
+  semana_mes integer
+  qtd_chamados bigint
+  nota_media double
+  custo_total decimal(18,10)
+  custo_medio_por_chamado decimal(18,10)
+  idade_media_cliente double
+  canal_mais_usado varchar
+}
+
+Table gold_table_kpis_mes {
+  ano integer
+  mes integer
+  qtd_chamados bigint
+  nota_media double
+  custo_total decimal(18,10)
+  custo_medio_por_chamado decimal(18,10)
+  idade_media_cliente double
+  canal_mais_usado varchar
+}
+
+
+Table gold_fato_desempenho_canal {
+  id_chamado bigint [primary key]
+  id_cliente bigint
+  id_atendente bigint
+  nome_canal varchar
+  resolvido boolean
+  motivo string
+  categoria_motivo string
+  criticidade_motivo string
+  valor_custo decimal(18,10)
+  nota_atendimento int
+  gold_ingestion_timestamp timestamp
+}
+
+Table gold_fato_experiencia_cliente {
+  id_chamado bigint [primary key]
+  id_cliente bigint
+  nome string
+  faixa_etaria_geracao string
+  flag_idoso int
+  regiao string
+  canal_utilizado varchar
+  resolvido boolean
+  nota_atendimento int
+  flag_sucesso int
+  flag_respondeu_pesquisa int
+}
+
+Table gold_dim_motivos_criticos {
+  motivo string
+  categoria_motivo string
+  criticidade_motivo string
+  qtd_chamados bigint
+  csat_medio double
+  tme_medio double
+  custo_total decimal(18,10)
+  ranking_prioridade int
+}
