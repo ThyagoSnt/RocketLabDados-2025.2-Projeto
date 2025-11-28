@@ -144,3 +144,25 @@ Table gold_view_analise_custos_regiao {
   tma_medio decimal(10,2)
   pct_custo_total decimal(35,2)
 }
+
+Table gold_view_canais {
+  canal string
+  volume_chamados long
+  taxa_resolucao_pct double
+  taxa_potencial_transferencia_pct double
+  csat_medio double
+  tma_medio decimal(10,2)
+  custo_total decimal(10,2)
+  custo_medio_por_chamado decimal(10,2)
+  pct_custo_total decimal(35,2)
+}
+
+Table gold_view_comparativo_humano_robo {
+  tipo_atendimento string
+  volumetria long
+  qtd_pesquisas_respondidas long
+  csat_medio double
+  taxa_resolucao_pct double
+  custo_total_acumulado decimal(21,2)
+  custo_medio_unitario decimal(13,4)
+}
